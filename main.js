@@ -1,11 +1,15 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+async function createWindow () {
+  // install Vue.js devtools plugin
+  await installExtension(VUEJS_DEVTOOLS)
+  
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
